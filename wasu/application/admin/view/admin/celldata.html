@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>华数后台管理</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="public/top" /}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+            {include file="public/left" /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li class="active">小区人员信息管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('addcelldata')}'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">小区名称</th>
+                                <th class="text-center">姓名</th>
+                                <th class="text-center">联系方式</th>
+                                <th class="text-center">身份证号</th>
+                                <th class="text-center">车牌号码</th>
+                                <th class="text-center">住址</th>
+                                <th class="text-center">是否流动人口</th>
+                                <th class="text-center">与户主关系</th>
+                                <th class="text-center">人户是否一致</th>
+                                <th class="text-center">是否有户无人</th>
+                                <th class="text-center">图片</th>
+                                <th class="text-center">创建时间</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	{volist name="celldatares" id="celldata"}
+	                            <tr>
+	                                <td align="center">{$celldata.id}</td>
+	                                <td align="center">{$celldata.cell_name}</td>
+                                    <td align="center">{$celldata.resident_name}</td>
+                                    <td align="center">{$celldata.telephone}</td>
+                                    <td align="center">{$celldata.id_number}</td>
+                                    <td align="center">{$celldata.id_car}</td>
+                                    <td align="center">{$celldata.adress}</td>
+                                    <td align="center">{$celldata.is_mobile}</td>
+                                    <td align="center">{$celldata.relation}</td>
+                                    <td align="center">{$celldata.is_same}</td>
+                                    <td align="center">{$celldata.is_noman}</td>
+                                    {if condition="$celldata.uploadimage eq ''"}
+                                    <td align="center" style="width:10%;">无图片</td>
+                                    {else /}
+                                    <td align="center" style="width:10%;" ><img src="__IMAGEPATH__/{$celldata.uploadimage}" style="width:100%;"></td>
+                                    {/if}
+                                    <td align="center">{$celldata.time}</td>
+	                                <td align="center">
+	                                    <a href="{:url('editcelldata',array('id'=>$celldata['id']))}" class="btn btn-primary btn-sm shiny">
+	                                        <i class="fa fa-edit"></i> 编辑
+	                                    </a>
+	                                    <a href="#" onClick="warning('确实要删除吗', '{:url('delcelldata',array('id'=>$celldata['id']))}')" class="btn btn-danger btn-sm shiny">
+	                                        <i class="fa fa-trash-o"></i> 删除
+	                                    </a>
+	                                </td>
+	                            </tr>
+	                        {/volist}
+                        </tbody>
+                    </table> 
+                </div>
+                
+                	<div style="margin-top: 10px;">
+                	<div style="text-align: center;">{$celldatares->render()}</div>
+    				</div>
+                <div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>

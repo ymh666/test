@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>华数后台管理</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="public/top" /}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+            {include file="public/left" /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li>
+                        <a href="{:url('celldata')}">小区人员信息管理</a>
+                    </li>
+                                        <li class="active">修改小区人员信息</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">修改小区人员信息</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{$editcelldata.id}">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">小区名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" placeholder="" name="cell_name" required="" value="{$editcelldata.cell_name}" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">姓名</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" placeholder="" name="resident_name" value="{$editcelldata.resident_name}" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">联系方式</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" placeholder="" name="telephone" value="{$editcelldata.telephone}" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">身份证号</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" placeholder="" name="id_number" value="{$editcelldata.id_number}" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">车牌号码</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" placeholder="" name="id_car" value="{$editcelldata.id_car}" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">住址</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" placeholder="" name="adress" value="{$editcelldata.adress}" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">是否流动人口</label>
+                            <div class="col-sm-6">
+                                <select name="is_mobile" style="width: 100%;" >
+                                    {if condition="$editcelldata.is_mobile eq '是'"}
+                                        <option selected="selected" value="是">是</option>
+                                        <option  value="否">否</option>
+                                    {else /}
+                                        <option  value="是">是</option>
+                                        <option selected="selected" value="否">否</option>
+                                    {/if}
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">与户主关系</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" placeholder="" name="relation" value="{$editcelldata.relation}" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">人户是否一致</label>
+                            <div class="col-sm-6">
+                                <select name="is_same" style="width: 100%;" >
+                                    {if condition="$editcelldata.is_same eq '是'"}
+                                    <option selected="selected" value="是">是</option>
+                                    <option  value="否">否</option>
+                                    {else /}
+                                    <option  value="是">是</option>
+                                    <option selected="selected" value="否">否</option>
+                                    {/if}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">是否有户无人</label>
+                            <div class="col-sm-6">
+                                <select name="is_noman" style="width: 100%;" >
+                                    {if condition="$editcelldata.is_noman eq '是'"}
+                                    <option selected="selected" value="是">是</option>
+                                    <option  value="否">否</option>
+                                    {else /}
+                                    <option  value="是">是</option>
+                                    <option selected="selected" value="否">否</option>
+                                    {/if}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="oldimage">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">图片</label>
+                            <div class="col-sm-3">
+                                {if condition="$editcelldata.uploadimage eq ''"}
+                                <input class="form-control" placeholder=""  value="无图片" disabled="disabled">
+                                {else /}
+                                <img src="__IMAGEPATH__/{$editcelldata.uploadimage}" style="width:10%;">
+                                {/if}
+                            </div>
+                            <div class="col-sm-3">
+                                <input id="btnchangeimg" type="button" value="修改图片" class="btn btn-default"></input>
+                            </div>
+                        </div>
+                        <div class="form-group" style="display: none;" id="changeimg">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">修改图片</label>
+                            <div class="col-sm-6">
+                                <input placeholder="" name="uploadimage" type="file">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">修改信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btnchangeimg").click(function(){
+                console.log("Sss");
+                $("#oldimage").css("display","none");
+                $("#changeimg").css("display","block");
+            });
+        });
+    </script>
+
+
+</body></html>
